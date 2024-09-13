@@ -88,30 +88,36 @@ insert into compra (id_produto, produto, valor, quantidade, id_form, fornecedor,
 insert into compra (id_produto, produto, valor, quantidade, id_form, fornecedor, cnpj, id_func, funcionario, data_compra) values (4, "Açúcar", 7.00, 1.00, 4, "União Acucar S.A.", "07.191.991/0003-48", 4, "Maria", '2024-08-30');
 insert into compra (id_produto, produto, valor, quantidade, id_form, fornecedor, cnpj, id_func, funcionario, data_compra) values (5, "Refrigerante", 4.00, 1.00, 5, "Coca Cola", "45.997.418/0017-10", 5, "Pedro", '2024-08-30');
 
-/*select * from produto;
-select * from funcionario;
-select * from fornecedor;*/
-select * from compra;
+insert into venda (id_produto, produto, descricao, quantidade, valor, id_func, funcionario, data_venda) values (1, "Salgadinho", "Salgadinho", 5, 35.00, 1, "Fernando", '2024-09-13');
+insert into venda (id_produto, produto, descricao, quantidade, valor, id_func, funcionario, data_venda) values (2, "Bolacha", "Maizena", 3, 18.00, 1, "Danilo", '2024-08-30');
+insert into venda (id_produto, produto, descricao, quantidade, valor, id_func, funcionario, data_venda) values (3, "Farinha de Trigo", "Trigo", 1, 15.00, 1, "Rodrigo", '2024-08-30');
+insert into venda (id_produto, produto, descricao, quantidade, valor, id_func, funcionario, data_venda) values (4, "Açúcar", "Refinado", 2, 14.00, 1, "Maria", '2024-08-30');
+insert into venda (id_produto, produto, descricao, quantidade, valor, id_func, funcionario, data_venda) values (5, "Refrigerante", "Cola", 3, 12.00, 1, "Pedro", '2024-08-30');
 
-/*select * from produto join fornecedor on id_produto = id_form;*/
+-- select * from produto;
+-- select * from funcionario;
+-- select * from fornecedor;
+-- select * from compra;
+-- select * from venda;
+
+-- select * from produto join fornecedor on id_produto = id_form;
 
 DELIMITER $$
 create procedure cad_produto(
-in
 p_produto varchar(60),
 p_descricao varchar(60),
 p_marca varchar(60),
 p_unidade_medida float
 )
 BEGIN
-if(p_produto != "") then
+-- if(p_produto != "") then
 insert into produto (produto, descricao, marca, unidade_medida) values (p_produto, p_descricao, p_marca, p_unidade_medida);
-else
-select "Digite o produto" as Msg;
-END if;
+-- else
+-- select "Digite o produto" as Msg;
+-- END if;
 END$$
 DELIMITER $$
 
-call cad_produto("", "de pelo", "VDR", 1);
+call cad_produto("Vassoura", "de pelo", "VDR", 1);
 
 select * from produto;
